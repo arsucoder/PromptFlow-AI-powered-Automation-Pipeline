@@ -63,7 +63,7 @@ except Exception as e:
     st.stop()
     
     # get the AI response from webhook
-    ai_response = response.json()[0]["output"]
+    #ai_response = response.json()[0]["output"]
     
     # display the AI response in chat
     with st.chat_message("assistant"):
