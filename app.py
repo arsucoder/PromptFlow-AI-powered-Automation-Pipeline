@@ -42,7 +42,8 @@ if user_message:
     
     # send the user message to the n8n webhook
     response = requests.post(
-        "http://localhost:5678/webhook/effeef99-a431-43d3-be9e-1a51c9113c74",  # replace with your n8n webhook URL
+        #"http://localhost:5678/webhook/effeef99-a431-43d3-be9e-1a51c9113c7",  # replace with your n8n webhook URL
+            "https://clerical-absurd-legume.ngrok-free.dev/webhook/effeef99-a431-43d3-be9e-1a51c9113c74",
         json={"message": user_message}
     )
     
