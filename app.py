@@ -41,11 +41,26 @@ if user_message:
         st.session_state.messages.append({"role": "user", "content": user_message})
     
     # send the user message to the n8n webhook
-    response = requests.post(
+   # response = requests.post(
         #"http://localhost:5678/webhook/effeef99-a431-43d3-be9e-1a51c9113c7",  # replace with your n8n webhook URL
-            "https://clerical-absurd-legume.ngrok-free.dev/webhook/effeef99-a431-43d3-be9e-1a51c9113c74",
-        json={"message": user_message}
-    )
+    #        "https://clerical-absurd-legume.ngrok-free.dev/webhook/effeef99-a431-43d3-be9e-1a51c9113c74",
+     #   json={"message": user_message}
+    #)
+
+response = requests.post(
+    "https://clerical-absurd-legume.ngrok-free.dev/webhook/effeef99-a431-43d3-be9e-1a51c9113c74",
+    json={"message": user_message}
+)
+
+st.write("Status Code:", response.status_code)
+st.write("Response Text:", response.text)
+
+try:
+    result = response.json()
+    st.write("JSON:", result)
+except Exception as e:
+    st.error(f"JSON Error: {e}")
+    st.stop()
     
     # get the AI response from webhook
     ai_response = response.json()[0]["output"]
